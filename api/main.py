@@ -1,6 +1,8 @@
 import falcon
 from configparser import ConfigParser
 
+from pages import *
+
 
 CONFIG_PATH = "./abysswatcher.conf"
 
@@ -17,9 +19,6 @@ class CORSMiddleware:
         resp.set_header('Access-Control-Allow-Headers', 'content-type')
         resp.set_header('Access-Control-Allow-Credentials', 'true')
 
-class Tops(object):
-    def on_get(self, req, resp):
-        resp.body = "HELLO!!"
 
 app = falcon.API(middleware=[CORSMiddleware()])
 app.add_route("/", Tops())
